@@ -1,0 +1,59 @@
+/* ============================================================
+   VARIABLES DE DISEÑO (DESIGN TOKENS)
+   Paleta: Andean Cooperative Community
+   Entidad: Caja Comunal Fuente De Vida (Sanjapamba, Guano)
+   ============================================================ */
+
+:root {
+  /* --- Colores Primarios (Azul Institucional) --- */
+  --color-primary: #006194;
+  --color-primary-container: #007bb9;
+  --color-on-primary: #ffffff;
+  --color-primary-fixed: #cce5ff;
+  --color-primary-fixed-dim: #93ccff;
+
+  /* --- Colores Secundarios (Verde Agrario / Cosecha) --- */
+  --color-secondary: #006d30;
+  --color-secondary-container: #92f5a4;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #007233;
+
+  /* --- Colores Terciarios (Tierra Andina / Dorado) --- */
+  --color-tertiary: #8d4b00;
+  --color-tertiary-fixed: #ffdcc3;
+  --color-on-tertiary: #ffffff;
+
+  /* --- Superficies y Fondos --- */
+  --color-surface: #fff8f6;
+  --color-surface-dim: #ffd0bb;
+  --color-surface-container-low: #fff1eb;
+  --color-surface-container: #ffeae1;
+  --color-surface-container-high: #ffe2d6;
+  --color-surface-container-highest: #ffdbcc;
+  --color-surface-container-lowest: #ffffff;
+  --color-background: #fff8f6;
+
+  /* --- Tipografías y Textos --- */
+  --color-on-surface: #351000;
+  --color-on-surface-variant: #3f4850;
+  --color-outline: #707881;
+  --color-outline-variant: #bfc7d2;
+
+  /* --- Sombras Institucionales --- */
+  --shadow-sm: 0 1px 3px rgba(53, 16, 0, 0.05);
+  --shadow-md: 0 4px 16px rgba(53, 16, 0, 0.08);
+  --shadow-lg: 0 10px 25px rgba(0, 97, 148, 0.12);
+  --shadow-xl: 0 20px 40px rgba(53, 16, 0, 0.14);
+
+  /* --- Radios de Borde --- */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* --- Transiciones --- */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}

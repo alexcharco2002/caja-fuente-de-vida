@@ -1,4 +1,5 @@
 import React from 'react'
+import '../styles/why-choose.css'
 
 export default function WhyChooseUs() {
   const pillars = [
@@ -26,41 +27,33 @@ export default function WhyChooseUs() {
   ]
 
   return (
-    <section id="valores" className="w-full bg-surface-container-low py-space-xl lg:py-24">
-      <div className="max-w-[1200px] mx-auto px-gutter lg:px-gutter-desktop">
+    <section id="nosotros" className="why-section">
+      <div className="max-w-[1200px] mx-auto px-4 lg:px-6">
         
-        {/* Title */}
-        <div className="text-center max-w-3xl mx-auto mb-space-xl">
-          <span className="font-label-md text-label-md uppercase font-bold text-primary tracking-wider">
-            Principios y Valores
-          </span>
-          <h2 className="font-headline-lg text-headline-lg lg:text-display-lg text-on-surface tracking-tight mt-space-xs">
+        {/* Título de la sección */}
+        <div className="why-header">
+          <span className="why-badge">Principios y Valores</span>
+          <h2 className="why-title">
             ¿Por qué elegir la Caja Comunal Sanjapamba?
           </h2>
-          <p className="font-body-lg text-body-lg text-on-surface-variant mt-space-xs">
+          <p className="why-desc">
             Somos una institución nacida desde las bases comunitarias, donde cada socio tiene voz, voto y participación directa.
           </p>
         </div>
 
-        {/* 3 Pillars */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+        {/* 3 Pilares */}
+        <div className="why-grid">
           {pillars.map((p, idx) => (
-            <div
-              key={idx}
-              className="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col gap-space-sm border border-outline-variant/10"
-            >
-              <div className={`w-14 h-14 rounded-2xl ${p.iconContainer} flex items-center justify-center shrink-0`}>
+            <div key={idx} className="pillar-card">
+              <div className={`pillar-icon-box ${p.iconContainer}`}>
                 <span className="material-symbols-outlined text-[32px]">{p.icon}</span>
               </div>
-              <h3 className="font-headline-md text-headline-md text-on-surface">
-                {p.title}
-              </h3>
-              <p className="font-body-md text-body-md text-on-surface-variant">
-                {p.description}
-              </p>
+              <h3 className="pillar-title">{p.title}</h3>
+              <p className="pillar-desc">{p.description}</p>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   )

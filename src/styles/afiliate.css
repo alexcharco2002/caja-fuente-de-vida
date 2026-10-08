@@ -1,0 +1,222 @@
+/* ============================================================
+   SECCIÓN: AFÍLIATE (PASO A PASO Y ATENCIÓN PERSONALIZADA)
+   ============================================================ */
+
+.afiliate-section {
+  width: 100%;
+  background-color: var(--color-surface-container-low);
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .afiliate-section {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.afiliate-header {
+  text-align: center;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2.5rem;
+}
+
+.afiliate-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 1rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-container-highest);
+  color: var(--color-tertiary);
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.afiliate-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-on-surface);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+@media (min-width: 1024px) {
+  .afiliate-title { font-size: 2.5rem; }
+}
+
+.afiliate-desc {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: var(--color-on-surface-variant);
+  line-height: 1.6;
+}
+
+/* Rejilla de los 3 pasos */
+.steps-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .steps-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.step-card {
+  background-color: var(--color-surface-container-lowest);
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(191, 199, 210, 0.2);
+  transition: all var(--transition-normal);
+}
+
+.step-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.step-corner-glow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 6rem;
+  height: 6rem;
+  border-bottom-left-radius: var(--radius-full);
+  pointer-events: none;
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.step-number-circle {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-full);
+  font-size: 1.125rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-on-surface);
+  margin-bottom: 0.375rem;
+}
+
+.step-desc {
+  font-size: 0.875rem;
+  color: var(--color-on-surface-variant);
+  line-height: 1.5;
+}
+
+.step-tag-box {
+  margin-top: 1rem;
+  padding: 0.375rem 0.625rem;
+  background-color: var(--color-surface-container-low);
+  border-radius: var(--radius-sm);
+  color: var(--color-on-surface-variant);
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+/* Banner de Atención Personalizada */
+.action-banner-card {
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-container) 100%);
+  color: var(--color-on-primary);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .action-banner-card {
+    flex-direction: row;
+    padding: 2.5rem;
+  }
+}
+
+.banner-text-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  max-width: 42rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .banner-text-box {
+    text-align: left;
+  }
+}
+
+.banner-overtitle {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-primary-fixed);
+  font-weight: 600;
+}
+
+.banner-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-on-primary);
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .banner-title { font-size: 1.75rem; }
+}
+
+.banner-desc {
+  font-size: 0.875rem;
+  color: var(--color-primary-fixed);
+  line-height: 1.5;
+}
+
+.banner-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .banner-actions {
+    width: auto;
+  }
+}

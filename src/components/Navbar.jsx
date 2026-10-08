@@ -1,15 +1,50 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import '../styles/navbar.css'
 
 export default function Navbar({ onOpenModal }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('inicio')
+  const [isScrolled, setIsScrolled] = useState(false)
 
   const navLinks = [
-    { name: 'Inicio', href: '#inicio' },
-    { name: 'Servicios', href: '#servicios' },
-    { name: 'Afíliate', href: '#afiliate' },
-    { name: 'Nosotros', href: '#valores' },
-    { name: 'Ubicación', href: '#ubicacion' },
+    { name: 'Inicio', id: 'inicio', href: '#inicio' },
+    { name: 'Servicios', id: 'servicios', href: '#servicios' },
+    { name: 'Afíliate', id: 'afiliate', href: '#afiliate' },
+    { name: 'Nosotros', id: 'nosotros', href: '#nosotros' },
+    { name: 'Ubicación', id: 'ubicacion', href: '#ubicacion' },
   ]
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 30)
+
+      const scrollPosition = window.scrollY + 140
+      for (let i = navLinks.length - 1; i >= 0; i--) {
+        const link = navLinks[i]
+        const element = document.getElementById(link.id)
+        if (element && scrollPosition >= element.offsetTop) {
+          setActiveSection(link.id)
+          break
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const handleNavClick = (e, targetId) => {
+    e.preventDefault()
+    setActiveSection(targetId)
+    setMobileMenuOpen(false)
+
+    const targetEl = document.getElementById(targetId)
+    if (targetEl) {
+      const offset = targetEl.getBoundingClientRect().top + window.pageYOffset - 80
+      window.scrollTo({ top: offset, behavior: 'smooth' })
+    }
+  }
 
   const handlePortalClick = (e) => {
     e.preventDefault()
@@ -17,45 +52,43 @@ export default function Navbar({ onOpenModal }) {
   }
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-      <div className="h-20 max-w-[1200px] mx-auto px-gutter lg:px-gutter-desktop flex items-center justify-between gap-space-md">
+    <header className={`navbar-header ${isScrolled ? 'scrolled' : 'top'}`}>
+      <div className="navbar-inner">
         
-        {/* Logo and Entity Identity */}
-        <a href="#inicio" className="flex items-center gap-space-sm min-w-0 group">
+        {/* Identidad de la Caja */}
+        <a href="#inicio" onClick={(e) => handleNavClick(e, 'inicio')} className="brand-link">
           <img
             src="/logo-fuente-de-vida.png"
-            alt="Logo Oficial Caja Comunal Fuente De Vida"
-            className="h-12 w-12 object-contain shrink-0 rounded-full transition-transform group-hover:scale-105 shadow-sm"
+            alt="Logo Caja Comunal Fuente De Vida"
+            className="brand-logo"
           />
           <div className="flex flex-col min-w-0">
-            <span className="font-headline-sm text-headline-sm text-primary tracking-tight truncate leading-tight">
-              Fuente De Vida
-            </span>
-            <span className="font-label-sm text-label-sm text-tertiary tracking-wide uppercase truncate text-[10px] sm:text-xs">
-              Guano • San Andrés • Sanjapamba
-            </span>
+            <span className="brand-title">Fuente De Vida</span>
+            <span className="brand-subtitle">Guano • San Andrés • Sanjapamba</span>
           </div>
         </a>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-space-xs p-1 bg-surface-container-low rounded-full">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="px-space-md py-space-sm rounded-full font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all"
-            >
-              {link.name}
-            </a>
-          ))}
+        {/* Menú Desktop con Scroll-Spy */}
+        <nav className="nav-pill-container">
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.id
+            return (
+              <a
+                key={link.id}
+                href={link.href}
+                onClick={(e) => handleNavClick(e, link.id)}
+                className={`nav-link ${isActive ? 'active' : ''}`}
+              >
+                {link.name}
+                {isActive && <span className="nav-link-dot" />}
+              </a>
+            )
+          })}
         </nav>
 
-        {/* Action Buttons */}
-        <div className="flex items-center gap-space-sm shrink-0">
-          <button
-            onClick={handlePortalClick}
-            className="hidden sm:inline-flex items-center justify-center px-space-lg py-space-sm h-11 rounded-full bg-primary text-on-primary font-label-lg text-label-lg shadow-[0px_4px_20px_-2px_rgba(120,53,15,0.06)] hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-95"
-          >
+        {/* Botones de acción */}
+        <div className="nav-actions">
+          <button onClick={handlePortalClick} className="btn-portal">
             Portal Socios
           </button>
 
@@ -63,20 +96,19 @@ export default function Navbar({ onOpenModal }) {
             href="https://wa.me/593992345678?text=Hola,%20deseo%20comunicarme%20con%20Caja%20Comunal%20Fuente%20de%20Vida"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-space-md py-space-sm h-11 rounded-full bg-secondary text-on-secondary font-label-lg text-label-lg hover:bg-secondary-container hover:text-on-secondary-container transition-all active:scale-95"
+            className="btn-contact"
           >
             Contactar
           </a>
 
-          {/* User Icon indicator */}
-          <div className="hidden sm:flex w-9 h-9 rounded-full bg-primary items-center justify-center shrink-0">
-            <span className="material-symbols-outlined text-on-primary text-[18px]">person</span>
+          <div className="user-badge">
+            <span className="material-symbols-outlined text-[20px]">person</span>
           </div>
 
-          {/* Mobile Menu Hamburger Toggle */}
+          {/* Botón menú móvil */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high focus:outline-none"
+            className="lg:hidden p-2 rounded-xl text-on-surface hover:bg-surface-container-high focus:outline-none"
             aria-label="Menú principal"
           >
             <span className="material-symbols-outlined text-[26px]">
@@ -86,28 +118,26 @@ export default function Navbar({ onOpenModal }) {
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Menú desplegable móvil */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-outline-variant/30 bg-surface/95 backdrop-blur-xl px-gutter py-space-md">
-          <nav className="flex flex-col gap-space-xs">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-space-md py-space-sm rounded-xl font-label-lg text-on-surface hover:bg-surface-container-high transition-colors"
-              >
-                {link.name}
-              </a>
-            ))}
-            <div className="pt-space-sm border-t border-outline-variant/20 flex flex-col gap-space-xs">
-              <button
-                onClick={(e) => {
-                  setMobileMenuOpen(false)
-                  handlePortalClick(e)
-                }}
-                className="w-full text-center py-2.5 rounded-full bg-primary text-on-primary font-label-lg"
-              >
+        <div className="mobile-drawer lg:hidden">
+          <nav className="flex flex-col gap-1.5">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.id
+              return (
+                <a
+                  key={link.id}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.id)}
+                  className={`mobile-nav-link ${isActive ? 'active' : ''}`}
+                >
+                  <span>{link.name}</span>
+                  {isActive && <span className="material-symbols-outlined text-[18px]">chevron_right</span>}
+                </a>
+              )
+            })}
+            <div className="pt-3 mt-2 border-t border-outline-variant/30 flex flex-col gap-2">
+              <button onClick={handlePortalClick} className="btn-portal w-full text-center">
                 Portal Socios
               </button>
             </div>

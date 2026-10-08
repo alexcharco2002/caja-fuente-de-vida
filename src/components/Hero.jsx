@@ -1,170 +1,252 @@
-import React from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
+import '../styles/hero.css'
+
+const carouselSlides = [
+  {
+    src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBqcb0PP3PAw3D9LsTv7cKyaZmuaodiccmY3dY885LZYs4IdhIyrTnSTrlxStor0r3wDL7MLKFtfmxyG6lRQRQ8m3mAeJbBvTY5oJl73OPdHraHP8VH0vCQqkNpDT8E84CTOkAob_W7Y9u9UVXiNTzcZtrPjhhdUOTWOQBxPNUL9T4NBC4VsNsweg0MJG9uO5qTcOsSvUu9l8otoJvsoRbhie6uzCBRXs3GCcv70spco8I_4KqX30HZww',
+    alt: 'Familia agricultora de Sanjapamba frente al volcán Chimborazo',
+    caption: 'Cosecha y Ahorro Seguro',
+    sub: 'Respaldando el trabajo de nuestra gente andina con microcréditos ágiles.',
+  },
+  {
+    src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBsxrnTVlQZ9kHt-xtY8o_G6Q0TLMXA_PqbSRnHuwL4ldhkTHy5-D5OO3FbhWUaDS__REWHiadIc0TugKvhvB8wtVIN47uKMPwIYA6mQ_THEhY5bLh8JI5cUS1pmtwbCGOFQ8QVIeazaPukpCRmQMHvGHLbuRHolCk0qFUVSdQz9tnhJOTD7KlEF4e3RB2NC53s4fwrBI4fz6QoUkvELwbs8uOUtsi9lQELZiKVckyZKGHwLriEK6KbJQ',
+    alt: 'Socio fundador productor agrícola de Sanjapamba Alto',
+    caption: 'Socios de por vida',
+    sub: 'Más de 2,400 familias campesinas confían en Fuente De Vida.',
+  },
+  {
+    src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAAgwYoJIwtMnfn98nVXB_TDOHM7ZSW2evqWyMKZ8VA7f4fpOI28Cc-1STO2Gf0f2eY0D8AI7NFmnDgFHuIDOYm16ZpsDJuLbhoD_7LjGB3_f43VRuRyji5g21UTjHa4QSl7H3b7wU5sozziI5KPxgZlSx6_dYmwhrGyTCwRJdqEzEhll9BndgLctqdkSYHYNji609DkabMfUPiz2DsnqBNSS5GyrHPhsCnAfSb45-Hg7E042062zC6QQ',
+    alt: 'Vista aérea de la comunidad de Sanjapamba, Guano, Chimborazo',
+    caption: 'Nuestra Casa Comunal',
+    sub: 'Ubicados en la Plaza Central de Sanjapamba, Cantón Guano.',
+  },
+]
+
+const SLIDE_INTERVAL = 8000
+
+const stats = [
+  {
+    icon: 'calendar_month',
+    value: '+15 Años',
+    label: 'Impulsando el campo y la familia',
+    colorClass: 'text-primary',
+    bgClass: 'bg-primary/10',
+    barClass: 'bg-primary',
+  },
+  {
+    icon: 'groups',
+    value: '+2,400',
+    label: 'Socios activos y productivos',
+    colorClass: 'text-secondary',
+    bgClass: 'bg-secondary/10',
+    barClass: 'bg-secondary',
+  },
+  {
+    icon: 'task_alt',
+    value: '98%',
+    label: 'Aprobación crediticia agrícola',
+    colorClass: 'text-tertiary',
+    bgClass: 'bg-tertiary/10',
+    barClass: 'bg-tertiary',
+  },
+]
 
 export default function Hero() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [transitioning, setTransitioning] = useState(false)
+
+  const goToSlide = useCallback((index) => {
+    setTransitioning(true)
+    setTimeout(() => {
+      setCurrentSlide(index)
+      setTransitioning(false)
+    }, 450)
+  }, [])
+
+  const nextSlide = useCallback(() => {
+    goToSlide((currentSlide + 1) % carouselSlides.length)
+  }, [currentSlide, goToSlide])
+
+  const prevSlide = useCallback(() => {
+    goToSlide((currentSlide - 1 + carouselSlides.length) % carouselSlides.length)
+  }, [currentSlide, goToSlide])
+
+  useEffect(() => {
+    const timer = setInterval(nextSlide, SLIDE_INTERVAL)
+    return () => clearInterval(timer)
+  }, [nextSlide])
+
+  const slide = carouselSlides[currentSlide]
+
   return (
-    <section id="inicio" className="relative w-full overflow-hidden bg-surface py-space-xl lg:py-24 pt-28">
-      {/* Marca de agua institucional del logo oficial en el fondo del Header */}
-      <div className="absolute right-[-8%] top-[5%] w-[420px] h-[420px] sm:w-[580px] sm:h-[580px] lg:w-[720px] lg:h-[720px] opacity-[0.08] pointer-events-none select-none -z-0">
-        <img
-          src="/logo-fuente-de-vida.png"
-          alt=""
-          className="w-full h-full object-contain"
-        />
+    <section id="inicio" className="hero-section">
+      {/* Marca de agua institucional */}
+      <div className="hero-watermark">
+        <img src="/logo-fuente-de-vida.png" alt="" className="w-full h-full object-contain" />
       </div>
+      <div className="hero-glow-1" />
+      <div className="hero-glow-2" />
 
-      {/* Ambient organic light gradients */}
-      <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-secondary-container/20 blur-3xl pointer-events-none"></div>
-      <div className="absolute top-1/2 -right-40 w-[500px] h-[500px] rounded-full bg-primary-fixed/25 blur-3xl pointer-events-none"></div>
+      {/* ── ÁREA PRINCIPAL: TEXTO IZQUIERDA Y FOTO DERECHA CON FUSIÓN DIAGONAL ── */}
+      <div className="hero-main-area">
 
-      <div className="max-w-[1200px] mx-auto px-gutter lg:px-gutter-desktop relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-lg lg:gap-space-xl items-center">
-          
-          {/* Text & Action Column */}
-          <div className="lg:col-span-6 flex flex-col items-start space-y-space-md">
-            <div className="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-secondary-container/40 text-on-secondary-container">
-              <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>
+        {/* Columna Izquierda: Contenido de Texto */}
+        <div className="hero-split-left">
+          <div className="hero-text-col">
+            <div className="hero-badge">
+              <span className="material-symbols-outlined text-[15px]" style={{ fontVariationSettings: "'FILL' 1" }}>
                 spa
               </span>
-              <span className="font-label-md text-label-md font-bold uppercase tracking-wider">
-                Minga Financiera Rural • Sanjapamba, Guano
-              </span>
+              <span>Minga Financiera Rural • Sanjapamba, Guano</span>
             </div>
 
-            <h1 className="font-display-lg text-display-lg-mobile sm:text-display-lg text-on-surface tracking-tight leading-tight">
-              Creciendo juntos con el <span className="text-primary">fruto de nuestra tierra</span>
+            <h1 className="hero-title">
+              Creciendo juntos con el <span className="hero-title-accent">fruto de nuestra tierra</span>
             </h1>
 
-            <p className="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
-              Brindamos soluciones de ahorro y crédito ágiles, seguras y solidarias pensadas especialmente para agricultores, emprendedores y familias de Sanjapamba y sus alrededores.
+            <p className="hero-description">
+              Brindamos soluciones de ahorro y crédito ágiles, seguras y solidarias para agricultores, emprendedores y familias de Sanjapamba y sus alrededores.
             </p>
 
-            {/* Slogan Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-high/60 border border-outline-variant/30 text-xs font-semibold text-tertiary">
-              <span className="material-symbols-outlined text-[16px] text-secondary">verified</span>
-              <span>Lema Oficial: "Juntos Trabajamos Para el Futuro"</span>
+            <div className="hero-slogan-pill">
+              <span className="material-symbols-outlined text-[15px] text-secondary">verified</span>
+              <span>Lema: "Juntos Trabajamos Para el Futuro"</span>
             </div>
 
-            <div className="flex flex-wrap items-center gap-space-sm pt-space-xs w-full sm:w-auto">
-              <a
-                href="#afiliate"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-space-xs px-space-lg py-3.5 h-12 rounded-full bg-primary text-on-primary font-label-lg text-label-lg shadow-md hover:bg-primary-container transition-all active:scale-95 group"
-              >
+            <div className="hero-buttons">
+              <a href="#afiliate" className="hero-btn-primary group">
                 <span>Ver Requisitos</span>
-                <span className="material-symbols-outlined text-[20px] transition-transform group-hover:translate-x-1">
+                <span className="material-symbols-outlined text-[18px] transition-transform duration-200 group-hover:translate-x-1">
                   arrow_forward
                 </span>
               </a>
-
-              <a
-                href="#simulador"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-space-xs px-space-lg py-3.5 h-12 rounded-full bg-surface-container-high text-on-surface font-label-lg text-label-lg hover:bg-surface-container-highest transition-all active:scale-95"
-              >
-                <span className="material-symbols-outlined text-[20px] text-secondary">tune</span>
+              <a href="#simulador" className="hero-btn-simular group">
+                <span className="material-symbols-outlined text-[18px] text-secondary transition-transform duration-200 group-hover:rotate-45">
+                  tune
+                </span>
                 <span>Simular Inversión</span>
               </a>
             </div>
 
-            {/* Trust highlights badge row */}
-            <div className="pt-space-sm flex flex-wrap items-center gap-space-md text-on-surface-variant">
-              <div className="flex items-center gap-space-xs">
-                <span className="material-symbols-outlined text-secondary text-[20px]" style={{ fontVariationSettings: "'FILL' 1" }}>
+            <div className="hero-trust-row">
+              <div className="flex items-center gap-1.5">
+                <span className="material-symbols-outlined text-secondary text-[17px]" style={{ fontVariationSettings: "'FILL' 1" }}>
                   verified_user
                 </span>
-                <span className="font-label-sm text-label-sm font-semibold">Fondo Solidario Seguro</span>
+                <span>Fondo Solidario Seguro</span>
               </div>
-              <span className="text-outline-variant text-[12px]">•</span>
-              <div className="flex items-center gap-space-xs">
-                <span className="material-symbols-outlined text-primary text-[20px]" style={{ fontVariationSettings: "'FILL' 1" }}>
+              <span>•</span>
+              <div className="flex items-center gap-1.5">
+                <span className="material-symbols-outlined text-primary text-[17px]" style={{ fontVariationSettings: "'FILL' 1" }}>
                   handshake
                 </span>
-                <span className="font-label-sm text-label-sm font-semibold">Gobernanza Comunal</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Visual / Hero Photography Column */}
-          <div className="lg:col-span-6 relative mt-space-md lg:mt-0">
-            <div className="relative rounded-2xl overflow-hidden shadow-xl bg-surface-container-low border border-outline-variant/20">
-              <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqcb0PP3PAw3D9LsTv7cKyaZmuaodiccmY3dY885LZYs4IdhIyrTnSTrlxStor0r3wDL7MLKFtfmxyG6lRQRQ8m3mAeJbBvTY5oJl73OPdHraHP8VH0vCQqkNpDT8E84CTOkAob_W7Y9u9UVXiNTzcZtrPjhhdUOTWOQBxPNUL9T4NBC4VsNsweg0MJG9uO5qTcOsSvUu9l8otoJvsoRbhie6uzCBRXs3GCcv70spco8I_4KqX30HZww"
-                alt="Familia agricultora de Sanjapamba frente al majestuoso volcán Chimborazo"
-                className="w-full h-[420px] sm:h-[480px] lg:h-[510px] object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-on-surface/60 via-transparent to-transparent"></div>
-
-              {/* Insignia del Logo Oficial en la Esquina Superior */}
-              <div className="absolute top-4 right-4 bg-surface-container-lowest/95 backdrop-blur-md px-3 py-2 rounded-2xl shadow-lg border border-outline-variant/30 flex items-center gap-2.5">
-                <img
-                  src="/logo-fuente-de-vida.png"
-                  alt="Sello Oficial Caja Comunal Fuente De Vida"
-                  className="w-11 h-11 object-contain drop-shadow-sm"
-                />
-                <div className="text-left pr-1">
-                  <span className="block text-[10px] uppercase font-bold text-tertiary tracking-wider">
-                    Sello Oficial
-                  </span>
-                  <span className="block text-xs font-bold text-primary leading-tight">
-                    Fuente De Vida
-                  </span>
-                </div>
-              </div>
-
-              {/* Floating Passbook Stat Widget */}
-              <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto sm:max-w-xs bg-surface-container-lowest/95 backdrop-blur-md p-space-md rounded-xl shadow-lg border border-outline-variant/20">
-                <div className="flex items-center gap-space-sm">
-                  <div className="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center shrink-0">
-                    <span className="material-symbols-outlined text-on-secondary-container text-[22px]">
-                      agriculture
-                    </span>
-                  </div>
-                  <div className="flex flex-col min-w-0">
-                    <span className="font-label-sm text-label-sm text-tertiary uppercase tracking-wider font-bold">
-                      Comunidad Activa
-                    </span>
-                    <span className="font-headline-sm text-headline-sm text-on-surface truncate">
-                      Cosecha y Ahorro Seguro
-                    </span>
-                  </div>
-                </div>
-                <p className="mt-space-xs font-body-md text-body-md text-on-surface-variant">
-                  Respaldando el trabajo de nuestra gente andina con microcréditos justos y a tiempo.
-                </p>
+                <span>Gobernanza Comunal</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Credibility Stats Strip */}
-        <div className="mt-space-xl grid grid-cols-1 sm:grid-cols-3 gap-space-md p-space-md lg:p-space-lg rounded-2xl bg-surface-container-lowest shadow-md border border-outline-variant/10">
-          <div className="flex items-center gap-space-md p-space-sm">
-            <div className="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center shrink-0 text-primary">
-              <span className="material-symbols-outlined text-[28px]">calendar_month</span>
-            </div>
-            <div>
-              <div className="font-headline-lg text-headline-lg text-on-surface tracking-tight">+15 Años</div>
-              <div className="font-body-md text-body-md text-on-surface-variant">Impulsando el campo y la familia</div>
-            </div>
-          </div>
+        {/* Columna Derecha: Carrusel Inmersivo con Fusión Diagonal Suave */}
+        <div className="hero-split-right">
+          <div className="hero-immersive-frame">
 
-          <div className="flex items-center gap-space-md p-space-sm border-t sm:border-t-0 sm:border-l border-outline-variant/20">
-            <div className="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center shrink-0 text-secondary">
-              <span className="material-symbols-outlined text-[28px]">groups</span>
-            </div>
-            <div>
-              <div className="font-headline-lg text-headline-lg text-on-surface tracking-tight">+2,400</div>
-              <div className="font-body-md text-body-md text-on-surface-variant">Socios activos y productivos</div>
-            </div>
-          </div>
+            {/* Fotos con transición suave */}
+            {carouselSlides.map((item, idx) => (
+              <img
+                key={idx}
+                src={item.src}
+                alt={item.alt}
+                className={`hero-bg-photo ${
+                  idx === currentSlide
+                    ? (transitioning ? 'opacity-0' : 'opacity-100 scale-100')
+                    : 'opacity-0 scale-105 pointer-events-none'
+                }`}
+              />
+            ))}
 
-          <div className="flex items-center gap-space-md p-space-sm border-t sm:border-t-0 sm:border-l border-outline-variant/20">
-            <div className="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center shrink-0 text-tertiary">
-              <span className="material-symbols-outlined text-[28px]">task_alt</span>
+            {/* Fusión diagonal suave (degradado que se mezcla sin líneas duras) */}
+            <div className="hero-diagonal-fade" />
+            <div className="hero-fade-bottom" />
+            <div className="hero-fade-top" />
+
+            {/* Sello Oficial Flotante */}
+            <div className="hero-floating-seal">
+              <img src="/logo-fuente-de-vida.png" alt="Sello Oficial" className="hero-seal-img" />
+              <div className="text-left">
+                <span className="block text-[9px] uppercase font-bold text-tertiary tracking-wider">
+                  Sello Oficial
+                </span>
+                <span className="block text-xs font-bold text-primary leading-tight">
+                  Fuente De Vida
+                </span>
+              </div>
             </div>
-            <div>
-              <div className="font-headline-lg text-headline-lg text-on-surface tracking-tight">98%</div>
-              <div className="font-body-md text-body-md text-on-surface-variant">Aprobación crediticia agrícola</div>
+
+            {/* Tarjeta flotante con descripción de la imagen */}
+            <div className={`hero-floating-caption ${transitioning ? 'opacity-0' : 'opacity-100'}`}>
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center shrink-0">
+                  <span className="material-symbols-outlined text-on-secondary-container text-[17px]">
+                    agriculture
+                  </span>
+                </div>
+                <div>
+                  <span className="block text-[10px] text-tertiary uppercase tracking-wider font-bold">
+                    Comunidad Activa
+                  </span>
+                  <span className="block text-xs sm:text-sm font-bold text-on-surface leading-tight">
+                    {slide.caption}
+                  </span>
+                </div>
+              </div>
+              <p className="mt-1 text-[11px] sm:text-xs text-on-surface-variant leading-snug">
+                {slide.sub}
+              </p>
             </div>
+
+            {/* Flechas de Navegación */}
+            <button onClick={prevSlide} className="hero-carousel-nav-btn prev" aria-label="Foto anterior">
+              <span className="material-symbols-outlined text-[20px]">chevron_left</span>
+            </button>
+            <button onClick={nextSlide} className="hero-carousel-nav-btn next" aria-label="Foto siguiente">
+              <span className="material-symbols-outlined text-[20px]">chevron_right</span>
+            </button>
+
+            {/* Puntos Indicadores Flotantes */}
+            <div className="hero-carousel-pills">
+              {carouselSlides.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => goToSlide(idx)}
+                  className={`hero-carousel-pill-dot ${idx === currentSlide ? 'active' : 'inactive'}`}
+                  aria-label={`Foto ${idx + 1}`}
+                />
+              ))}
+            </div>
+
           </div>
+        </div>
+
+      </div>
+
+      {/* ── FRANJA DE ESTADÍSTICAS AJUSTADA A LA PÁGINA DE INICIO ── */}
+      <div className="stats-strip">
+        <div className="stats-grid">
+          {stats.map((stat, idx) => (
+            <div key={idx} className="stat-item-card">
+              <div className={`stat-corner-accent ${stat.bgClass}`} />
+              <div className={`stat-icon-box ${stat.bgClass}`}>
+                <span className={`material-symbols-outlined ${stat.colorClass} text-[22px] sm:text-[26px]`}>
+                  {stat.icon}
+                </span>
+              </div>
+              <div className="text-center sm:text-left">
+                <div className={`stat-value ${stat.colorClass}`}>{stat.value}</div>
+                <div className="stat-label">{stat.label}</div>
+              </div>
+              <div className={`stat-bottom-line ${stat.barClass}`} />
+            </div>
+          ))}
         </div>
       </div>
     </section>

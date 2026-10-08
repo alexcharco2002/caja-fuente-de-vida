@@ -1,26 +1,31 @@
+/* ==========================================================================
+   CAJA COMUNAL "FUENTE DE VIDA" — HOJA DE ESTILOS PRINCIPAL (MASTER)
+   Entidad: Caja Comunal Fuente De Vida
+   Localidad: Guano • San Andrés • Sanjapamba (Chimborazo, Ecuador)
+   Lema Oficial: "Juntos Trabajamos Para el Futuro"
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. IMPORTACIÓN DE MÓDULOS DE ESTILO (DEBEN IR AL INICIO)
+   -------------------------------------------------------------------------- */
+@import './styles/variables.css';
+@import './styles/base.css';
+@import './styles/navbar.css';
+@import './styles/hero.css';
+@import './styles/services.css';
+@import './styles/calculator.css';
+@import './styles/afiliate.css';
+@import './styles/why-choose.css';
+@import './styles/testimonial.css';
+@import './styles/location.css';
+@import './styles/final-cta.css';
+@import './styles/footer.css';
+@import './styles/modal.css';
+@import './styles/whatsapp.css';
+
+/* --------------------------------------------------------------------------
+   2. DIRECTIVAS BASE DE TAILWIND CSS
+   -------------------------------------------------------------------------- */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-  html, body {
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth;
-  }
-}
-
-@keyframes soft-pulse {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(0, 109, 48, 0.4);
-  }
-  50% {
-    transform: scale(1.05);
-    box-shadow: 0 0 0 14px rgba(0, 109, 48, 0);
-  }
-}
-
-.pulse-action {
-  animation: soft-pulse 2.8s infinite ease-in-out;
-}

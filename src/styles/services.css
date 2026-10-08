@@ -1,0 +1,200 @@
+/* ============================================================
+   SECCIÓN: SERVICIOS Y PORTAFOLIO SOLIDARIO
+   ============================================================ */
+
+.services-section {
+  width: 100%;
+  background-color: var(--color-surface);
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+
+@media (min-width: 1024px) {
+  .services-section {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.services-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .services-header {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+}
+
+.services-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  letter-spacing: 0.05em;
+}
+
+.services-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-on-surface);
+  letter-spacing: -0.02em;
+  margin-top: 0.25rem;
+}
+
+@media (min-width: 1024px) {
+  .services-title {
+    font-size: 2.25rem;
+  }
+}
+
+.services-desc {
+  font-size: 1rem;
+  color: var(--color-on-surface-variant);
+  margin-top: 0.5rem;
+  max-width: 42rem;
+}
+
+.services-trust-tag {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(146, 245, 164, 0.2);
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+@media (min-width: 768px) {
+  .services-trust-tag {
+    display: flex;
+  }
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Tarjeta individual de producto */
+.product-card {
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-container-lowest);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(191, 199, 210, 0.2);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.product-card.highlighted {
+  border: 2px solid rgba(141, 75, 0, 0.3);
+  box-shadow: var(--shadow-md);
+}
+
+.product-card.highlighted:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.product-ribbon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.25rem 0.85rem;
+  background-color: var(--color-tertiary);
+  color: var(--color-on-tertiary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom-left-radius: var(--radius-md);
+}
+
+.product-icon-box {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.product-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-container-high);
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.product-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-on-surface);
+  margin-bottom: 0.375rem;
+}
+
+.product-description {
+  font-size: 0.875rem;
+  color: var(--color-on-surface-variant);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.product-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.product-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--color-on-surface-variant);
+}
+
+.product-btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  border: none;
+}

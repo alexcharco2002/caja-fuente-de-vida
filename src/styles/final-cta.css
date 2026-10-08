@@ -1,0 +1,81 @@
+/* ============================================================
+   SECCIÓN: CTA FINAL (LLAMADO A LA ACCIÓN COMUNITARIO)
+   ============================================================ */
+
+.final-cta-section {
+  width: 100%;
+  background-color: var(--color-surface);
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.final-cta-card {
+  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-on-secondary-container) 100%);
+  color: var(--color-on-secondary);
+  border-radius: var(--radius-xl);
+  padding: 2rem 1.5rem;
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .final-cta-card {
+    flex-direction: row;
+    padding: 3rem 2.5rem;
+    text-align: left;
+  }
+}
+
+.final-cta-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-secondary-container);
+  color: var(--color-on-secondary-container);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.final-cta-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-on-secondary);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+@media (min-width: 1024px) {
+  .final-cta-title {
+    font-size: 2.25rem;
+  }
+}
+
+.final-cta-desc {
+  font-size: 0.9375rem;
+  color: var(--color-secondary-fixed);
+  margin-top: 0.5rem;
+}
+
+.final-cta-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .final-cta-buttons {
+    flex-direction: row;
+    width: auto;
+  }
+}

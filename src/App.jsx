@@ -27,11 +27,11 @@ export default function App() {
       {/* Barra de navegación superior fija */}
       <Navbar onOpenModal={handleOpenModal} />
 
-      {/* Contenido principal */}
+      {/* Contenido principal ordenado de forma lógica y sincronizada con el menú */}
       <main className="w-full flex-grow">
         <Hero />
-        <AfiliateSection />
         <ServicesSection onOpenModal={handleOpenModal} />
+        <AfiliateSection />
         <WhyChooseUs />
         <Testimonial />
         <LocationSection />

@@ -1,0 +1,97 @@
+/* ============================================================
+   SECCIÓN: MODAL DE PRODUCTO
+   ============================================================ */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: rgba(53, 16, 0, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: opacity var(--transition-normal);
+}
+
+.modal-card {
+  background-color: var(--color-surface-container-lowest);
+  border-radius: var(--radius-xl);
+  max-width: 32rem;
+  width: 100%;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-xl);
+  position: relative;
+  border: 1px solid rgba(191, 199, 210, 0.2);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: var(--color-on-surface-variant);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: 0.25rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+  background-color: var(--color-surface-container-high);
+  color: var(--color-on-surface);
+}
+
+.modal-icon-badge {
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-md);
+  background-color: var(--color-primary-fixed);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.modal-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--color-on-surface);
+  margin-bottom: 0.25rem;
+}
+
+.modal-description {
+  font-size: 0.875rem;
+  color: var(--color-on-surface-variant);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.modal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--color-on-surface-variant);
+  margin-bottom: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.modal-list-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(191, 199, 210, 0.2);
+}

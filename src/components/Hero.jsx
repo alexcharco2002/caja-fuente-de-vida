@@ -3,6 +3,15 @@ import React from 'react'
 export default function Hero() {
   return (
     <section id="inicio" className="relative w-full overflow-hidden bg-surface py-space-xl lg:py-24 pt-28">
+      {/* Marca de agua institucional del logo oficial en el fondo del Header */}
+      <div className="absolute right-[-8%] top-[5%] w-[420px] h-[420px] sm:w-[580px] sm:h-[580px] lg:w-[720px] lg:h-[720px] opacity-[0.08] pointer-events-none select-none -z-0">
+        <img
+          src="/logo-fuente-de-vida.png"
+          alt=""
+          className="w-full h-full object-contain"
+        />
+      </div>
+
       {/* Ambient organic light gradients */}
       <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-secondary-container/20 blur-3xl pointer-events-none"></div>
       <div className="absolute top-1/2 -right-40 w-[500px] h-[500px] rounded-full bg-primary-fixed/25 blur-3xl pointer-events-none"></div>
@@ -17,7 +26,7 @@ export default function Hero() {
                 spa
               </span>
               <span className="font-label-md text-label-md font-bold uppercase tracking-wider">
-                Minga Financiera Rural
+                Minga Financiera Rural • Sanjapamba, Guano
               </span>
             </div>
 
@@ -28,6 +37,12 @@ export default function Hero() {
             <p className="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
               Brindamos soluciones de ahorro y crédito ágiles, seguras y solidarias pensadas especialmente para agricultores, emprendedores y familias de Sanjapamba y sus alrededores.
             </p>
+
+            {/* Slogan Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-high/60 border border-outline-variant/30 text-xs font-semibold text-tertiary">
+              <span className="material-symbols-outlined text-[16px] text-secondary">verified</span>
+              <span>Lema Oficial: "Juntos Trabajamos Para el Futuro"</span>
+            </div>
 
             <div className="flex flex-wrap items-center gap-space-sm pt-space-xs w-full sm:w-auto">
               <a
@@ -69,13 +84,30 @@ export default function Hero() {
 
           {/* Visual / Hero Photography Column */}
           <div className="lg:col-span-6 relative mt-space-md lg:mt-0">
-            <div className="relative rounded-2xl overflow-hidden shadow-xl bg-surface-container-low">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl bg-surface-container-low border border-outline-variant/20">
               <img
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqcb0PP3PAw3D9LsTv7cKyaZmuaodiccmY3dY885LZYs4IdhIyrTnSTrlxStor0r3wDL7MLKFtfmxyG6lRQRQ8m3mAeJbBvTY5oJl73OPdHraHP8VH0vCQqkNpDT8E84CTOkAob_W7Y9u9UVXiNTzcZtrPjhhdUOTWOQBxPNUL9T4NBC4VsNsweg0MJG9uO5qTcOsSvUu9l8otoJvsoRbhie6uzCBRXs3GCcv70spco8I_4KqX30HZww"
                 alt="Familia agricultora de Sanjapamba frente al majestuoso volcán Chimborazo"
                 className="w-full h-[420px] sm:h-[480px] lg:h-[510px] object-cover object-center"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-on-surface/60 via-transparent to-transparent"></div>
+
+              {/* Insignia del Logo Oficial en la Esquina Superior */}
+              <div className="absolute top-4 right-4 bg-surface-container-lowest/95 backdrop-blur-md px-3 py-2 rounded-2xl shadow-lg border border-outline-variant/30 flex items-center gap-2.5">
+                <img
+                  src="/logo-fuente-de-vida.png"
+                  alt="Sello Oficial Caja Comunal Fuente De Vida"
+                  className="w-11 h-11 object-contain drop-shadow-sm"
+                />
+                <div className="text-left pr-1">
+                  <span className="block text-[10px] uppercase font-bold text-tertiary tracking-wider">
+                    Sello Oficial
+                  </span>
+                  <span className="block text-xs font-bold text-primary leading-tight">
+                    Fuente De Vida
+                  </span>
+                </div>
+              </div>
 
               {/* Floating Passbook Stat Widget */}
               <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto sm:max-w-xs bg-surface-container-lowest/95 backdrop-blur-md p-space-md rounded-xl shadow-lg border border-outline-variant/20">

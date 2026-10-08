@@ -23,16 +23,16 @@ export default function Navbar({ onOpenModal }) {
         {/* Logo and Entity Identity */}
         <a href="#inicio" className="flex items-center gap-space-sm min-w-0 group">
           <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb93s6KAZ5QZxowGu9pFloykuXPLyw2PbLOpp1jdlc2pFXKb16qoxtOdgC6_EwF-oOClyNl22PZGNZxuxlkm5MTfkF0GOJu_ftjdb087qpACx8a7d8snwknQnmSW2o6QEX5qixri_OCG4G-tYmpqKOa2-gtvat-VglXsjzdfgmLMLd8FR4bKhtfj81Nk3rBEyE2zFyvYy-fj_Mxt9VzkBQYBqL9q6gY3ONR3AG3vx0e_WmeEi-JLvrcw"
-            alt="Logo Caja Comunal Fuente de Vida Sanjapamba"
-            className="h-9 w-auto object-contain shrink-0 transition-transform group-hover:scale-105"
+            src="/logo-fuente-de-vida.png"
+            alt="Logo Oficial Caja Comunal Fuente De Vida"
+            className="h-12 w-12 object-contain shrink-0 rounded-full transition-transform group-hover:scale-105 shadow-sm"
           />
           <div className="flex flex-col min-w-0">
             <span className="font-headline-sm text-headline-sm text-primary tracking-tight truncate leading-tight">
-              Fuente de Vida
+              Fuente De Vida
             </span>
-            <span className="font-label-sm text-label-sm text-tertiary tracking-wide uppercase truncate">
-              Sanjapamba • Caja Comunal
+            <span className="font-label-sm text-label-sm text-tertiary tracking-wide uppercase truncate text-[10px] sm:text-xs">
+              Guano • San Andrés • Sanjapamba
             </span>
           </div>
         </a>

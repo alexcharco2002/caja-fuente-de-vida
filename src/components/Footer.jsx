@@ -12,18 +12,23 @@ export default function Footer() {
               <img
                 alt="Logo Caja Comunal Fuente de Vida Sanjapamba"
                 className="h-8 w-auto object-contain"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb93s6KAZ5QZxowGu9pFloykuXPLyw2PbLOpp1jdlc2pFXKb16qoxtOdgC6_EwF-oOClyNl22PZGNZxuxlkm5MTfkF0GOJu_ftjdb087qpACx8a7d8snwknQnmSW2o6QEX5qixri_OCG4G-tYmpqKOa2-gtvat-VglXsjzdfgmLMLd8FR4bKhtfj81Nk3rBEyE2zFyvYy-fj_Mxt9VzkBQYBqL9q6gY3ONR3AG3vx0e_WmeEi-JLvrcw"
+                src="/logo-fuente-de-vida.png"
               />
-              <span className="font-headline-sm text-headline-sm text-primary font-bold">
-                Fuente de Vida
-              </span>
+              <div className="flex flex-col">
+                <span className="font-headline-sm text-headline-sm text-primary font-bold leading-tight">
+                  Fuente De Vida
+                </span>
+                <span className="text-[11px] text-tertiary font-semibold uppercase tracking-wider">
+                  Juntos Trabajamos Para el Futuro
+                </span>
+              </div>
             </div>
             <p className="font-body-md text-body-md text-on-surface-variant">
-              Solidaridad financiera y minga comunitaria al servicio del progreso de las familias de Sanjapamba y sus comunidades vecinas.
+              Solidaridad financiera y minga comunitaria al servicio del progreso de las familias de Sanjapamba, Parroquia San Andrés, Cantón Guano y comunidades vecinas.
             </p>
             <div className="mt-space-sm inline-flex items-center gap-space-xs px-space-sm py-space-xs bg-secondary-container/40 text-on-secondary-container rounded-full max-w-fit font-label-sm text-label-sm">
               <span className="material-symbols-outlined text-[16px]">verified</span>
-              <span>Caja Comunal Autorizada • Sanjapamba</span>
+              <span>Guano • San Andrés • Sanjapamba</span>
             </div>
           </div>
 

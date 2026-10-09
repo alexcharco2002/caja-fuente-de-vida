@@ -5,9 +5,11 @@
 .afiliate-section {
   width: 100%;
   background-color: var(--color-surface-container-low);
-  padding-top: 3.5rem;
-  padding-bottom: 3.5rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
   position: relative;
+  border-top: 1px solid rgba(191, 199, 210, 0.35);
+  border-bottom: 1px solid rgba(191, 199, 210, 0.35);
 }
 
 @media (min-width: 1024px) {

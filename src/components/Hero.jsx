@@ -51,7 +51,7 @@ const stats = [
   },
 ]
 
-export default function Hero() {
+export default function Hero({ onOpenModal }) {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [transitioning, setTransitioning] = useState(false)
 
@@ -105,7 +105,7 @@ export default function Hero() {
             </h1>
 
             <p className="hero-description">
-              Brindamos soluciones de ahorro y crédito ágiles, seguras y solidarias para agricultores, emprendedores y familias de Sanjapamba y sus alrededores.
+              Brindamos soluciones de ahorro y crédito ágiles, seguras y solidarias para agricultores, emprendedores y familias de Sanjapamba.
             </p>
 
             <div className="hero-slogan-pill">
@@ -120,12 +120,16 @@ export default function Hero() {
                   arrow_forward
                 </span>
               </a>
-              <a href="#simulador" className="hero-btn-simular group">
+              <button
+                type="button"
+                onClick={() => onOpenModal && onOpenModal('simulador-inversion')}
+                className="hero-btn-simular group"
+              >
                 <span className="material-symbols-outlined text-[18px] text-secondary transition-transform duration-200 group-hover:rotate-45">
                   tune
                 </span>
-                <span>Simular Inversión</span>
-              </a>
+                <span>Simular Inversión / Crédito</span>
+              </button>
             </div>
 
             <div className="hero-trust-row">

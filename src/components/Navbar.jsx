@@ -5,6 +5,7 @@ export default function Navbar({ onOpenModal }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('inicio')
   const [isScrolled, setIsScrolled] = useState(false)
+  const [bannerDismissed, setBannerDismissed] = useState(false)
 
   const navLinks = [
     { name: 'Inicio', id: 'inicio', href: '#inicio' },
@@ -53,15 +54,64 @@ export default function Navbar({ onOpenModal }) {
 
   return (
     <header className={`navbar-header ${isScrolled ? 'scrolled' : 'top'}`}>
+      {/* Cintillo Superior Informativo Comunal */}
+      {!bannerDismissed && (
+        <div className={`top-announcement-bar ${isScrolled ? 'collapsed' : ''}`}>
+          <div className="announcement-inner">
+            <div className="announcement-left">
+              <span className="announcement-badge">
+                <span className="pulse-dot" />
+                Aviso Comunal
+              </span>
+              <div className="announcement-text">
+                <span className="material-symbols-outlined text-[15px] text-secondary-fixed">place</span>
+                <span className="desktop-text">
+                  Atención en feria este sábado de 8:30 a 13:00 en la Plaza Central
+                </span>
+                <span className="mobile-text">
+                  Feria este sábado: 08:30 - 13:00 (Plaza Central)
+                </span>
+              </div>
+            </div>
+
+            <div className="announcement-right">
+              <a
+                href="https://wa.me/593992345678?text=Hola,%20quisiera%20consultar%20sobre%20la%20atención%20en%20feria"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="announcement-whatsapp-btn"
+                title="Escribir al WhatsApp oficial"
+              >
+                <span className="material-symbols-outlined text-[14px]">chat</span>
+                <span className="desktop-wa">+593 99 234 5678</span>
+                <span className="mobile-wa">WhatsApp</span>
+              </a>
+
+              <button
+                onClick={() => setBannerDismissed(true)}
+                className="announcement-close-btn"
+                aria-label="Cerrar aviso temporal"
+                title="Cerrar aviso"
+              >
+                <span className="material-symbols-outlined text-[15px]">close</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="navbar-inner">
         
         {/* Identidad de la Caja */}
-        <a href="#inicio" onClick={(e) => handleNavClick(e, 'inicio')} className="brand-link">
-          <img
-            src="/logo-fuente-de-vida.png"
-            alt="Logo Caja Comunal Fuente De Vida"
-            className="brand-logo"
-          />
+        <a href="#inicio" onClick={(e) => handleNavClick(e, 'inicio')} className="brand-link group">
+          <div className="brand-logo-wrapper">
+            <img
+              src="/logo-fuente-de-vida.png"
+              alt="Logo Caja Comunal Fuente De Vida"
+              className="brand-logo"
+            />
+            <div className="brand-shimmer" />
+          </div>
           <div className="flex flex-col min-w-0">
             <span className="brand-title">Fuente De Vida</span>
             <span className="brand-subtitle">Guano • San Andrés • Sanjapamba</span>

@@ -74,7 +74,7 @@
   min-height: 0;
   display: flex;
   flex-direction: column;
-  padding-top: 4.5rem;
+  padding-top: 5.75rem;
   width: 100%;
 }
 
@@ -82,7 +82,7 @@
   .hero-main-area {
     flex-direction: row;
     align-items: stretch;
-    padding-top: 4.75rem;
+    padding-top: 0;
   }
 }
 
@@ -100,7 +100,7 @@
     flex: 0 0 50%;
     max-width: 50%;
     justify-content: flex-end;
-    padding: 1rem 2.5rem 1rem 2rem;
+    padding: 6.25rem 2.5rem 2rem 2rem;
   }
 }
 
@@ -108,6 +108,7 @@
   .hero-split-left {
     flex: 0 0 48%;
     max-width: 48%;
+    padding-top: 6.5rem;
     padding-right: 3.5rem;
   }
 }
@@ -309,14 +310,19 @@
   }
 }
 
-/* Corte diagonal suave en pantallas grandes */
+/* Corte diagonal limpio y nítido en pantallas grandes */
 @media (min-width: 1024px) {
+  .hero-split-right {
+    filter: drop-shadow(-8px 0 20px rgba(53, 16, 0, 0.1));
+  }
+
   .hero-immersive-frame {
-    clip-path: polygon(7% 0%, 100% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(6% 0%, 100% 0%, 100% 100%, 0% 100%);
+    border-bottom: 1.5px solid rgba(191, 199, 210, 0.35);
   }
 }
 
-/* Fotos del carrusel */
+/* Fotos del carrusel: 100% nítidas y limpias */
 .hero-bg-photo {
   position: absolute;
   inset: 0;
@@ -327,52 +333,11 @@
   transition: opacity 700ms ease-in-out, transform 8000ms ease-out;
 }
 
-/* ── FUSIÓN DIAGONAL SUAVE (SIN LÍNEA RESALTADA, SOLO DEGRADADO) ── */
-.hero-diagonal-fade {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    112deg,
-    var(--color-surface) 0%,
-    rgba(255, 248, 246, 0.95) 12%,
-    rgba(255, 248, 246, 0.75) 24%,
-    rgba(255, 248, 246, 0.35) 42%,
-    rgba(255, 248, 246, 0.05) 58%,
-    transparent 70%
-  );
-  pointer-events: none;
-  z-index: 4;
-}
-
-.hero-fade-bottom {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 26%;
-  background: linear-gradient(
-    to top,
-    var(--color-surface) 0%,
-    rgba(255, 248, 246, 0.85) 35%,
-    transparent 100%
-  );
-  pointer-events: none;
-  z-index: 4;
-}
-
+/* Se eliminan los velos degradados nublados para máxima claridad visual */
+.hero-diagonal-fade,
+.hero-fade-bottom,
 .hero-fade-top {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 14%;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 248, 246, 0.5) 0%,
-    transparent 100%
-  );
-  pointer-events: none;
-  z-index: 4;
+  display: none;
 }
 
 /* Insignia del Sello Oficial Flotante */
@@ -396,6 +361,13 @@
 
 .hero-floating-seal:hover {
   transform: translateY(-2px);
+}
+
+@media (min-width: 1024px) {
+  .hero-floating-seal {
+    top: 5.75rem;
+    right: 2rem;
+  }
 }
 
 .hero-seal-img {
@@ -526,8 +498,11 @@
   flex-shrink: 0;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.5rem;
+  padding-top: 0.65rem;
   padding-bottom: 0.85rem;
+  background-color: var(--color-surface-container-low);
+  border-top: 1.5px solid rgba(191, 199, 210, 0.4);
+  box-shadow: 0 -4px 16px rgba(53, 16, 0, 0.04);
 }
 
 @media (min-width: 1024px) {

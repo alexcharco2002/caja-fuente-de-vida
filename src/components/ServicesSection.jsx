@@ -1,5 +1,4 @@
 import React from 'react'
-import SavingsCalculator from './SavingsCalculator.jsx'
 import '../styles/services.css'
 
 export default function ServicesSection({ onOpenModal }) {
@@ -93,10 +92,14 @@ export default function ServicesSection({ onOpenModal }) {
                 </div>
               </div>
             </div>
-            <a href="#simulador" className="product-btn bg-primary text-on-primary hover:bg-primary-container shadow">
-              <span>Calcular Rendimiento</span>
+            <button
+              type="button"
+              onClick={() => onOpenModal('simulador-inversion')}
+              className="product-btn bg-primary text-on-primary hover:bg-primary-container shadow"
+            >
+              <span>Simular Inversión DPF</span>
               <span className="material-symbols-outlined text-[18px]">calculate</span>
-            </a>
+            </button>
           </div>
 
           {/* Tarjeta 3: Microcréditos Agrícolas */}
@@ -127,21 +130,17 @@ export default function ServicesSection({ onOpenModal }) {
                 </div>
               </div>
             </div>
-            <a
-              href="https://wa.me/593992345678?text=Hola,%20quisiera%20solicitar%20información%20para%20un%20Microcrédito%20Agrícola"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={() => onOpenModal('simulador-prestamo')}
               className="product-btn bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container shadow"
             >
-              <span>Solicitar Crédito</span>
-              <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
-            </a>
+              <span>Simular Crédito Agrícola</span>
+              <span className="material-symbols-outlined text-[18px]">calculate</span>
+            </button>
           </div>
 
         </div>
-
-        {/* Simulador integrado */}
-        <SavingsCalculator />
 
       </div>
     </section>

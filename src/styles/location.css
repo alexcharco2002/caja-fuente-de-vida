@@ -4,15 +4,17 @@
 
 .location-section {
   width: 100%;
-  background-color: var(--color-surface-container-low);
-  padding-top: 3.5rem;
-  padding-bottom: 3.5rem;
+  background-color: #ffffff;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  border-top: 1px solid rgba(191, 199, 210, 0.35);
+  border-bottom: 1px solid rgba(191, 199, 210, 0.35);
 }
 
 @media (min-width: 1024px) {
   .location-section {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
   }
 }
 
@@ -64,14 +66,14 @@
 }
 
 .location-card-item {
-  padding: 0.75rem 1rem;
+  padding: 0.85rem 1.15rem;
   border-radius: var(--radius-md);
-  background-color: var(--color-surface-container-lowest);
+  background-color: var(--color-surface);
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid rgba(191, 199, 210, 0.2);
+  box-shadow: 0 2px 8px rgba(53, 16, 0, 0.04);
+  border: 1.5px solid rgba(191, 199, 210, 0.4);
 }
 
 .location-map-col {

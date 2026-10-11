@@ -114,7 +114,7 @@ export default function Navbar({ onOpenModal }) {
           </div>
           <div className="flex flex-col min-w-0">
             <span className="brand-title">Fuente De Vida</span>
-            <span className="brand-subtitle">Guano • San Andrés • Sanjapamba</span>
+            <span className="brand-subtitle">Sanjapamba</span>
           </div>
         </a>
 

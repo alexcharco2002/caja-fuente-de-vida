@@ -29,7 +29,7 @@ export default function Footer() {
             </p>
             <div className="footer-seal-tag">
               <span className="material-symbols-outlined text-[16px]">verified</span>
-              <span>Guano • San Andrés • Sanjapamba</span>
+              <span>Caja Comunal • Sanjapamba</span>
             </div>
           </div>
 
